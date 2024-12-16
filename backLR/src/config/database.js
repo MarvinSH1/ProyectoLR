@@ -21,3 +21,5 @@ export const testConnection = async () => {
     console.error("Error al conectar con la base de datos:", error.message);
   }
 };
+
+export default testConnection;

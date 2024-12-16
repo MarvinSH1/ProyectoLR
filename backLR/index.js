@@ -1,20 +1,26 @@
 import express from "express";
 import dotenv from "dotenv";
-import { testConnection } from "./config/database.js";
+import { testConnection } from "./src/config/database.js";
 
-dotenv.config();
+import adminRoutes from "./src/routes/adminRoutes.js";
+import repartidorRoutes from "./src/routes/repartidorRoutes.js";
 
 const app = express();
-
-// Middlewares
-app.use(express.json());
+dotenv.config();
 
 // Probar conexión a la base de datos
 testConnection();
 
+// Middlewares
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Hola Mundo");
 });
+
+//rutas
+app.use("/api", adminRoutes); //administrador
+app.use("/api/repartidor", repartidorRoutes); //repartidor
 
 // Configurar puerto y levantar servidor
 const PORT = process.env.PORT || 3000;
