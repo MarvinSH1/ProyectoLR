@@ -4,6 +4,7 @@ import { testConnection } from "./src/config/database.js";
 
 import adminRoutes from "./src/routes/adminRoutes.js";
 import repartidorRoutes from "./src/routes/repartidorRoutes.js";
+import registroRoutes from "./src/routes/registroRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 //rutas
 app.use("/api", adminRoutes); //administrador
 app.use("/api/repartidor", repartidorRoutes); //repartidor
+app.use("/api/cliente", registroRoutes); //registro para cliente
 
 // Configurar puerto y levantar servidor
 const PORT = process.env.PORT || 3000;
